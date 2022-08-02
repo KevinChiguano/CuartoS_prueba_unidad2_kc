@@ -12,17 +12,17 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import com.uce.edu.demo.repository.modelo.CitaMedica;
+import com.uce.edu.demo.repository.modelo.CitaMedica1;
 
 @Repository
 @Transactional
-public class CitaMedicaRepositoryImpl implements ICitaMedicaRepository{
+public class CitaMedicaRepositoryImpl1 implements ICitaMedicaRepository1{
 
 	@PersistenceContext
 	private EntityManager entityManager;
 	
 	@Override
-	public void insertar(CitaMedica citaMedica) {
+	public void insertar(CitaMedica1 citaMedica) {
 		// TODO Auto-generated method stub
 		this.entityManager.persist(citaMedica);
 	}
@@ -41,9 +41,9 @@ public class CitaMedicaRepositoryImpl implements ICitaMedicaRepository{
 	}
 
 	@Override
-	public List<CitaMedicaSencillo> buscarCitasMedicas(LocalDateTime fecha, BigDecimal costo) {
+	public List<CitaMedicaSencillo1> buscarCitasMedicas(LocalDateTime fecha, BigDecimal costo) {
 		// TODO Auto-generated method stub
-		TypedQuery<CitaMedicaSencillo> myQuery = this.entityManager.createQuery("SELECT NEW com.uce.edu.demo.repository.CitaMedicaSencillo(cd.numeroCita,cd.fechaCita,cd.costoCita,cd.fechaControl) FROM CitaMedica cd",CitaMedicaSencillo.class);
+		TypedQuery<CitaMedicaSencillo1> myQuery = this.entityManager.createQuery("SELECT NEW com.uce.edu.demo.repository.CitaMedicaSencillo(cd.numeroCita,cd.fechaCita,cd.costoCita,cd.fechaControl) FROM CitaMedica cd",CitaMedicaSencillo1.class);
 		
 		return myQuery.getResultList();
 	}

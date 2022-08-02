@@ -1,10 +1,10 @@
-package com.uce.edu.demo.service;
+package com.uce.edu.demo.correccion.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.uce.edu.demo.repository.IDoctorRepository;
-import com.uce.edu.demo.repository.modelo.Doctor;
+import com.uce.edu.demo.correccion.repository.IDoctorRepository;
+import com.uce.edu.demo.correccion.repository.modelo.Doctor;
 
 @Service
 public class DoctorServiceImpl implements IDoctorService{
@@ -19,21 +19,21 @@ public class DoctorServiceImpl implements IDoctorService{
 	}
 
 	@Override
-	public Doctor buscar(Integer id) {
-		// TODO Auto-generated method stub
-		return this.doctorRepository.buscar(id);
-	}
-
-	@Override
 	public void actualizar(Doctor doctor) {
 		// TODO Auto-generated method stub
 		this.doctorRepository.actualizar(doctor);
 	}
 
 	@Override
-	public void eliminar(Integer id) {
+	public Doctor buscar(Integer codigo) {
 		// TODO Auto-generated method stub
-		this.doctorRepository.eliminar(id);
+		return this.doctorRepository.buscar(codigo);
+	}
+
+	@Override
+	public void eliminar(Integer codigo) {
+		// TODO Auto-generated method stub
+		this.doctorRepository.eliminar(codigo);
 	}
 
 }

@@ -2,8 +2,6 @@ package com.uce.edu.demo;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Iterator;
-import java.util.List;
 
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,28 +9,27 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.edu.demo.repository.CitaMedicaSencillo;
-import com.uce.edu.demo.repository.IDoctorRepository;
-import com.uce.edu.demo.repository.modelo.CitaMedica;
-import com.uce.edu.demo.repository.modelo.Doctor;
-import com.uce.edu.demo.repository.modelo.Paciente;
-import com.uce.edu.demo.service.ICitaMedicaService;
-import com.uce.edu.demo.service.IPacienteService;
+import com.uce.edu.demo.correccion.repository.IPacienteRepository;
+import com.uce.edu.demo.correccion.repository.modelo.Doctor;
+import com.uce.edu.demo.correccion.repository.modelo.Paciente;
+import com.uce.edu.demo.correccion.service.IDoctorService;
+import com.uce.edu.demo.correccion.service.IGestroCitaMedicaService;
 
 @SpringBootApplication
 public class PruebaUnidad2KcApplication implements CommandLineRunner{
 	
 	private static final Logger LOGGER = Logger.getLogger(PruebaUnidad2KcApplication.class);
-	
-	@Autowired
-	private IDoctorRepository doctorRepository;
-	
-	@Autowired
-	private IPacienteService pacienteService;
-	
-	@Autowired
-	private ICitaMedicaService citaMedicaService;
 
+	@Autowired
+	private IDoctorService doctorService;
+	
+	@Autowired
+	private IPacienteRepository pacienteRepository;
+	
+	
+	@Autowired
+	private IGestroCitaMedicaService citaMedicaService;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(PruebaUnidad2KcApplication.class, args);
 	}
@@ -41,57 +38,55 @@ public class PruebaUnidad2KcApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		
-		Doctor doctor = new Doctor();
-		doctor.setCedula("123456789");
-		doctor.setNombre("Saul");
-		doctor.setApellido("Arguello");
-		doctor.setFechaNacimiento(LocalDateTime.of(2000, 11,11, 0, 0));
-		doctor.setNumeroConsultorio("123");
-		doctor.setTitulo("Cirujano");
-		doctor.setSalario(new BigDecimal(100));
+		Doctor doc1 = new Doctor();
+		doc1.setNombre("Edison");
+		doc1.setApellido("Cayambe");
+		doc1.setCedula("1234");
+		doc1.setFechaNacimiento(LocalDateTime.now());
+		doc1.setNumeroConsultorio("A234");
+		doc1.setCodigoSenescyt("123123123");
+		doc1.setGenero("M");
 		
-		Doctor doctor2 = new Doctor();
-		doctor2.setCedula("789456123");
-		doctor2.setNombre("Paul");
-		doctor2.setApellido("Mendoza");
-		doctor2.setFechaNacimiento(LocalDateTime.of(1998, 10,10, 0, 0));
-		doctor2.setNumeroConsultorio("123");
-		doctor2.setTitulo("Pediatra");
-		doctor2.setSalario(new BigDecimal(200));
+		Doctor doc2 = new Doctor();
+		doc2.setNombre("Kevin");
+		doc2.setApellido("Correa");
+		doc2.setCedula("1478");
+		doc2.setFechaNacimiento(LocalDateTime.now());
+		doc2.setNumeroConsultorio("A789");
+		doc2.setCodigoSenescyt("456456456");
+		doc2.setGenero("M");
 		
-		//this.doctorRepository.insertar(doctor);
-		//this.doctorRepository.insertar(doctor2);
+		//this.doctorService.insertar(doc1);
+		//this.doctorService.insertar(doc2);
 		
-		Paciente paciente = new Paciente();
-		paciente.setCedula("147258369");
-		paciente.setNombre("Diego");
-		paciente.setApellido("Caiza");
-		paciente.setFechaNacimiento(LocalDateTime.of(2001, 1, 1, 1, 0));
-		paciente.setCodigoIess("12378945612");
-		paciente.setEstatura(new BigDecimal(72.8));
-		paciente.setPeso(new BigDecimal(90.7));
-		paciente.setGenero("M");
+		Paciente paci1 = new Paciente();
+		paci1.setNombre("Hugo");
+		paci1.setApellido("Teran");
+		paci1.setCedula("3698");
+		paci1.setFechaNacimiento(LocalDateTime.of(1990, 12, 2, 8, 56));
+		paci1.setCodigoSeguro("237884");
+		paci1.setEstatura(new Double("170"));
+		paci1.setPeso(new Double("100"));
+		paci1.setGenero("M");
 		
-		Paciente paciente2 = new Paciente();
-		paciente2.setCedula("1593572846");
-		paciente2.setNombre("Carmen");
-		paciente2.setApellido("Chiguano");
-		paciente2.setFechaNacimiento(LocalDateTime.of(2009, 2, 2, 2, 0));
-		paciente2.setCodigoIess("12378945612");
-		paciente2.setEstatura(new BigDecimal(65.5));
-		paciente2.setPeso(new BigDecimal(70.7));
-		paciente2.setGenero("F");
+		Paciente paci2 = new Paciente();
+		paci2.setNombre("Daniela");
+		paci2.setApellido("Teran");
+		paci2.setCedula("4826");
+		paci2.setFechaNacimiento(LocalDateTime.of(1020, 10, 5, 4, 56));
+		paci2.setCodigoSeguro("59152348");
+		paci2.setEstatura(new Double("165"));
+		paci2.setPeso(new Double("80"));
+		paci2.setGenero("F");
 		
-		//this.pacienteService.insertar(paciente);
-		//this.pacienteService.insertar(paciente2);
+		//this.pacienteRepository.insertar(paci1);
+		//this.pacienteRepository.insertar(paci2);
 		
-		//this.citaMedicaService.actualizar("4", "Tos", "pastillas", LocalDateTime.now());
-		//this.citaMedicaService.actualizar("4", "Fiebre", "Jarabe", LocalDateTime.now());
 		
-		List<CitaMedicaSencillo> citaMedicas= this.citaMedicaService.buscarCitasMedicas(LocalDateTime.now(), new BigDecimal(50));
-		for(CitaMedicaSencillo item: citaMedicas) {
-			LOGGER.info(item);
-		}
+		//this.citaMedicaService.generarCita("12231", LocalDateTime.now(), new BigDecimal(40), "Inca", "3698", "1478");
+		this.citaMedicaService.actualizarCita("12231", "Covid", "Pastillas", LocalDateTime.now());
+		
+		
 	}
 
 }

@@ -7,30 +7,30 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import com.uce.edu.demo.repository.modelo.Doctor;
-import com.uce.edu.demo.repository.modelo.Paciente;
+import com.uce.edu.demo.repository.modelo.Doctor1;
+import com.uce.edu.demo.repository.modelo.Paciente1;
 
 @Repository
 @Transactional
-public class PacienteRepositoryImpl implements IPacienteRepository{
+public class PacienteRepositoryImpl1 implements IPacienteRepository1{
 
 	@PersistenceContext
 	private EntityManager entityManager;
 	
 	@Override
-	public void insertar(Paciente paciente) {
+	public void insertar(Paciente1 paciente) {
 		// TODO Auto-generated method stub
 		this.entityManager.persist(paciente);
 	}
 
 	@Override
-	public Paciente buscar(Integer id) {
+	public Paciente1 buscar(Integer id) {
 		// TODO Auto-generated method stub
-		return this.entityManager.find(Paciente.class, id);
+		return this.entityManager.find(Paciente1.class, id);
 	}
 
 	@Override
-	public void actualizar(Paciente paciente) {
+	public void actualizar(Paciente1 paciente) {
 		// TODO Auto-generated method stub
 		this.entityManager.merge(paciente);
 	}
@@ -38,15 +38,15 @@ public class PacienteRepositoryImpl implements IPacienteRepository{
 	@Override
 	public void eliminar(Integer id) {
 		// TODO Auto-generated method stub
-		Paciente paciente = this.buscar(id);
+		Paciente1 paciente = this.buscar(id);
 		this.entityManager.remove(paciente);
 	}
 
 	@Override
-	public Paciente buscarsPorCedula(String cedula) {
+	public Paciente1 buscarsPorCedula(String cedula) {
 		// TODO Auto-generated method stub
 		
-		TypedQuery<Paciente> myQuery = this.entityManager.createQuery("SELECT p FROM Paciente WHERE p.cedula =:datoCedula",Paciente.class);
+		TypedQuery<Paciente1> myQuery = this.entityManager.createQuery("SELECT p FROM Paciente p WHERE p.cedula =:datoCedula",Paciente1.class);
 		myQuery.setParameter("datoCedula", cedula);
 		return myQuery.getSingleResult();
 		

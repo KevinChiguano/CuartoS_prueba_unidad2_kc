@@ -1,6 +1,5 @@
-package com.uce.edu.demo.repository.modelo;
+package com.uce.edu.demo.correccion.repository.modelo;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -16,11 +15,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "paciente")
 public class Paciente {
-
+	
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "paci_id_sequence")
+	@SequenceGenerator(name = "paci_id_sequence", sequenceName = "paci_id_sequence", allocationSize = 1)
 	@Column(name = "paci_id")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "paci_id_seq")
-	@SequenceGenerator(name = "paci_id_seq", sequenceName = "paci_id_seq", allocationSize = 1)
 	private Integer id;
 	
 	@Column(name = "paci_cedula")
@@ -35,22 +34,23 @@ public class Paciente {
 	@Column(name = "paci_fecha_nacimiento")
 	private LocalDateTime fechaNacimiento;
 	
-	@Column(name = "paci_codigo_iess")
-	private String codigoIess;
+	@Column(name = "paci_codigo_seguro")
+	private String codigoSeguro;
 	
 	@Column(name = "paci_estatura")
-	private BigDecimal estatura;
+	private Double estatura;
 	
 	@Column(name = "paci_peso")
-	private BigDecimal peso;
+	private Double peso;
 	
 	@Column(name = "paci_genero")
 	private String genero;
 	
 	@OneToMany(mappedBy = "paciente")
-	private List<CitaMedica> citasMedicas;
-
+	List<CitaMedica> citas;
+	
 	//SET y GET
+
 	public Integer getId() {
 		return id;
 	}
@@ -91,27 +91,27 @@ public class Paciente {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	public String getCodigoIess() {
-		return codigoIess;
+	public String getCodigoSeguro() {
+		return codigoSeguro;
 	}
 
-	public void setCodigoIess(String codigoIess) {
-		this.codigoIess = codigoIess;
+	public void setCodigoSeguro(String codigoSeguro) {
+		this.codigoSeguro = codigoSeguro;
 	}
 
-	public BigDecimal getEstatura() {
+	public Double getEstatura() {
 		return estatura;
 	}
 
-	public void setEstatura(BigDecimal estatura) {
+	public void setEstatura(Double estatura) {
 		this.estatura = estatura;
 	}
 
-	public BigDecimal getPeso() {
+	public Double getPeso() {
 		return peso;
 	}
 
-	public void setPeso(BigDecimal peso) {
+	public void setPeso(Double peso) {
 		this.peso = peso;
 	}
 
@@ -123,14 +123,14 @@ public class Paciente {
 		this.genero = genero;
 	}
 
-	public List<CitaMedica> getCitasMedicas() {
-		return citasMedicas;
+	public List<CitaMedica> getCitas() {
+		return citas;
 	}
 
-	public void setCitasMedicas(List<CitaMedica> citasMedicas) {
-		this.citasMedicas = citasMedicas;
+	public void setCitas(List<CitaMedica> citas) {
+		this.citas = citas;
 	}
 	
 	
-	
+
 }

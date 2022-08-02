@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class CitaMedicaSencillo implements Serializable{
+public class CitaMedicaSencillo1 implements Serializable{
 
 	/**
 	 * 
@@ -16,12 +16,12 @@ public class CitaMedicaSencillo implements Serializable{
 	private BigDecimal costoCita;
 	private LocalDateTime fechaControl;
 	
-	public CitaMedicaSencillo() {
+	public CitaMedicaSencillo1() {
 		
 
 	}
 	
-	public CitaMedicaSencillo(String numero, LocalDateTime fechaCita, BigDecimal costoCita,
+	public CitaMedicaSencillo1(String numero, LocalDateTime fechaCita, BigDecimal costoCita,
 			LocalDateTime fechaControl) {
 		
 		this.numero = numero;

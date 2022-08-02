@@ -1,4 +1,4 @@
-package com.uce.edu.demo.repository.modelo;
+package com.uce.edu.demo.correccion.repository.modelo;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -19,21 +19,21 @@ public class CitaMedica {
 
 	@Id
 	@Column(name = "cime_id")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cime_id_seq")
-	@SequenceGenerator(name = "cime_id_seq", sequenceName = "cime_id_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cime_id_sequence")
+	@SequenceGenerator(name = "cime_id_sequence", sequenceName = "cime_id_sequence", allocationSize = 1)
 	private Integer id;
 	
 	@Column(name = "cime_numero")
-	private String numeroCita;
+	private String numero;
 	
 	@Column(name = "cime_fecha_cita")
 	private LocalDateTime fechaCita;
 	
-	@Column(name = "cime_costo_cita")
-	private BigDecimal costoCita;
+	@Column(name = "cime_valor")
+	private BigDecimal valor;
 	
-	@Column(name = "cime_lugar_cita")
-	private String lugarCita;
+	@Column(name = "cime_lugar")
+	private String lugar;
 	
 	@Column(name = "cime_diagnostico")
 	private String diagnostico;
@@ -41,18 +41,18 @@ public class CitaMedica {
 	@Column(name = "cime_receta")
 	private String receta;
 	
-	@Column(name = "cime_fecha_control")
-	private LocalDateTime fechaControl;
+	@Column(name = "cime_fecha_proxima_cita")
+	private LocalDateTime fechaProximaCita;
 	
 	@ManyToOne
-	@JoinColumn(name = "cime_doct_id")
+	@JoinColumn(name = "doct_id")
 	private Doctor doctor;
 	
 	@ManyToOne
-	@JoinColumn(name = "cime_paci_id")
+	@JoinColumn(name = "paci_id")
 	private Paciente paciente;
 
-	//GET y SET
+	//SET y GET
 	public Integer getId() {
 		return id;
 	}
@@ -61,12 +61,12 @@ public class CitaMedica {
 		this.id = id;
 	}
 
-	public String getNumeroCita() {
-		return numeroCita;
+	public String getNumero() {
+		return numero;
 	}
 
-	public void setNumeroCita(String numeroCita) {
-		this.numeroCita = numeroCita;
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 
 	public LocalDateTime getFechaCita() {
@@ -77,20 +77,20 @@ public class CitaMedica {
 		this.fechaCita = fechaCita;
 	}
 
-	public BigDecimal getCostoCita() {
-		return costoCita;
+	public BigDecimal getValor() {
+		return valor;
 	}
 
-	public void setCostoCita(BigDecimal costoCita) {
-		this.costoCita = costoCita;
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
 	}
 
-	public String getLugarCita() {
-		return lugarCita;
+	public String getLugar() {
+		return lugar;
 	}
 
-	public void setLugarCita(String lugarCita) {
-		this.lugarCita = lugarCita;
+	public void setLugar(String lugar) {
+		this.lugar = lugar;
 	}
 
 	public String getDiagnostico() {
@@ -109,12 +109,12 @@ public class CitaMedica {
 		this.receta = receta;
 	}
 
-	public LocalDateTime getFechaControl() {
-		return fechaControl;
+	public LocalDateTime getFechaProximaCita() {
+		return fechaProximaCita;
 	}
 
-	public void setFechaControl(LocalDateTime fechaControl) {
-		this.fechaControl = fechaControl;
+	public void setFechaProximaCita(LocalDateTime fechaProximaCita) {
+		this.fechaProximaCita = fechaProximaCita;
 	}
 
 	public Doctor getDoctor() {
@@ -132,6 +132,7 @@ public class CitaMedica {
 	public void setPaciente(Paciente paciente) {
 		this.paciente = paciente;
 	}
+	
 	
 	
 	

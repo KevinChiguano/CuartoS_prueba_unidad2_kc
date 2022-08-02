@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "doctor")
-public class Doctor {
+public class Doctor1 {
 
 	@Id
 	@Column(name = "doct_id")
@@ -45,7 +45,7 @@ public class Doctor {
 	private BigDecimal salario;
 
 	@OneToMany(mappedBy = "doctor")
-	private List<CitaMedica> citasMedicas;
+	private List<CitaMedica1> citasMedicas;
 	
 	//SET y GET
 
@@ -113,11 +113,11 @@ public class Doctor {
 		this.salario = salario;
 	}
 
-	public List<CitaMedica> getCitasMedicas() {
+	public List<CitaMedica1> getCitasMedicas() {
 		return citasMedicas;
 	}
 
-	public void setCitasMedicas(List<CitaMedica> citasMedicas) {
+	public void setCitasMedicas(List<CitaMedica1> citasMedicas) {
 		this.citasMedicas = citasMedicas;
 	}
 

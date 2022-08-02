@@ -7,41 +7,41 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.uce.edu.demo.repository.CitaMedicaSencillo;
-import com.uce.edu.demo.repository.ICitaMedicaRepository;
-import com.uce.edu.demo.repository.IDoctorRepository;
-import com.uce.edu.demo.repository.IPacienteRepository;
-import com.uce.edu.demo.repository.modelo.CitaMedica;
-import com.uce.edu.demo.repository.modelo.Doctor;
-import com.uce.edu.demo.repository.modelo.Paciente;
+import com.uce.edu.demo.repository.CitaMedicaSencillo1;
+import com.uce.edu.demo.repository.ICitaMedicaRepository1;
+import com.uce.edu.demo.repository.IDoctorRepository1;
+import com.uce.edu.demo.repository.IPacienteRepository1;
+import com.uce.edu.demo.repository.modelo.CitaMedica1;
+import com.uce.edu.demo.repository.modelo.Doctor1;
+import com.uce.edu.demo.repository.modelo.Paciente1;
 
 @Service
-public class CitaMedicaService implements ICitaMedicaService{
+public class CitaMedicaService1 implements ICitaMedicaService1{
 
 	@Autowired
-	ICitaMedicaRepository citaMedicaRepository;
+	ICitaMedicaRepository1 citaMedicaRepository;
 	
 	@Autowired
-	IDoctorRepository doctorRepository;
+	IDoctorRepository1 doctorRepository;
 	
 	@Autowired
-	IPacienteRepository pacienteRepository;
+	IPacienteRepository1 pacienteRepository;
 	
 	@Override
 	public void agendarCitaMedica(String numeroTurn, LocalDateTime fechaCita, BigDecimal costoCita, String lugarCita,
 			String cedulaDoctor, String cedulaPaciente) {
 		// TODO Auto-generated method stub
 		
-		Doctor doctor = this.doctorRepository.buscarsPorCedula(cedulaDoctor);
-		Paciente paciente = this.pacienteRepository.buscarsPorCedula(cedulaPaciente);
+		Doctor1 doctor = this.doctorRepository.buscarsPorCedula(cedulaDoctor);
+		Paciente1 paciente = this.pacienteRepository.buscarsPorCedula(cedulaPaciente);
 		
-		CitaMedica citaMedica = new CitaMedica();
+		CitaMedica1 citaMedica = new CitaMedica1();
 		citaMedica.setNumeroCita(numeroTurn);
 		citaMedica.setFechaCita(fechaCita);
 		citaMedica.setLugarCita(lugarCita);
 		citaMedica.setDoctor(doctor);
 		citaMedica.setPaciente(paciente);
-		
+		System.out.println(citaMedica);
 		this.citaMedicaRepository.insertar(citaMedica);
 	}
 
@@ -52,7 +52,7 @@ public class CitaMedicaService implements ICitaMedicaService{
 	}
 
 	@Override
-	public List<CitaMedicaSencillo> buscarCitasMedicas(LocalDateTime fecha, BigDecimal costo) {
+	public List<CitaMedicaSencillo1> buscarCitasMedicas(LocalDateTime fecha, BigDecimal costo) {
 		// TODO Auto-generated method stub
 		return this.citaMedicaRepository.buscarCitasMedicas(fecha, costo);
 	}
