@@ -2,6 +2,7 @@ package com.uce.edu.demo;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.uce.edu.demo.correccion.repository.IPacienteRepository;
 import com.uce.edu.demo.correccion.repository.modelo.Doctor;
 import com.uce.edu.demo.correccion.repository.modelo.Paciente;
+import com.uce.edu.demo.correccion.repository.modelo.PacienteSencillo;
 import com.uce.edu.demo.correccion.service.IDoctorService;
 import com.uce.edu.demo.correccion.service.IGestroCitaMedicaService;
 
@@ -26,9 +28,8 @@ public class PruebaUnidad2KcApplication implements CommandLineRunner{
 	@Autowired
 	private IPacienteRepository pacienteRepository;
 	
-	
 	@Autowired
-	private IGestroCitaMedicaService citaMedicaService;
+	private IGestroCitaMedicaService gestorCitaMedicaService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(PruebaUnidad2KcApplication.class, args);
@@ -83,9 +84,14 @@ public class PruebaUnidad2KcApplication implements CommandLineRunner{
 		//this.pacienteRepository.insertar(paci2);
 		
 		
-		//this.citaMedicaService.generarCita("12231", LocalDateTime.now(), new BigDecimal(40), "Inca", "3698", "1478");
-		this.citaMedicaService.actualizarCita("12231", "Covid", "Pastillas", LocalDateTime.now());
+		//this.gestorCitaMedicaService.generarCita("12231", LocalDateTime.now(), new BigDecimal(40), "Inca", "3698", "1478");
+		//this.gestorCitaMedicaService.actualizarCita("12231", "Covid", "Pastillas", LocalDateTime.now());
 		
+		List<PacienteSencillo> listaPaci= this.gestorCitaMedicaService.buscarFechaGenero(LocalDateTime.of(1, 9, 4,0,0), "F");
+		
+		for(PacienteSencillo item: listaPaci) {
+			LOGGER.info(item);
+		}
 		
 	}
 

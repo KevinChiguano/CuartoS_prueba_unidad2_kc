@@ -2,6 +2,7 @@ package com.uce.edu.demo.correccion.service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import com.uce.edu.demo.correccion.repository.IPacienteRepository;
 import com.uce.edu.demo.correccion.repository.modelo.CitaMedica;
 import com.uce.edu.demo.correccion.repository.modelo.Doctor;
 import com.uce.edu.demo.correccion.repository.modelo.Paciente;
+import com.uce.edu.demo.correccion.repository.modelo.PacienteSencillo;
 
 @Service
 public class GestorCitaMedicaImpl implements IGestroCitaMedicaService{
@@ -55,6 +57,12 @@ public class GestorCitaMedicaImpl implements IGestroCitaMedicaService{
 		cita.setReceta(receta);
 		
 		this.citaMedicaRepository.actualizar(cita);
+	}
+
+	@Override
+	public List<PacienteSencillo> buscarFechaGenero(LocalDateTime fechaNacimiento, String genero) {
+		// TODO Auto-generated method stub
+		return this.pacienteRepository.buscar(fechaNacimiento, genero);
 	}
 
 }

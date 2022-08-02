@@ -49,7 +49,15 @@ public class Paciente {
 	@OneToMany(mappedBy = "paciente")
 	List<CitaMedica> citas;
 	
+	@Override
+	public String toString() {
+		return "Paciente [id=" + id + ", cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido
+				+ ", fechaNacimiento=" + fechaNacimiento + ", codigoSeguro=" + codigoSeguro + ", estatura=" + estatura
+				+ ", peso=" + peso + ", genero=" + genero + "]";
+	}
+	
 	//SET y GET
+
 
 	public Integer getId() {
 		return id;

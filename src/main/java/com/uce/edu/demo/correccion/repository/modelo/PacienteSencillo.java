@@ -14,12 +14,20 @@ public class PacienteSencillo {
 	}
 	
 	public PacienteSencillo(String cedula, String nombre, LocalDateTime fechaNacimiento, String genero) {
-		super();
 		this.cedula = cedula;
 		this.nombre = nombre;
 		this.fechaNacimiento = fechaNacimiento;
 		this.genero = genero;
 	}
+	
+	
+	
+	@Override
+	public String toString() {
+		return "PacienteSencillo [cedula=" + cedula + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento
+				+ ", genero=" + genero + "]";
+	}
+
 	//SET y GET
 	public String getCedula() {
 		return cedula;

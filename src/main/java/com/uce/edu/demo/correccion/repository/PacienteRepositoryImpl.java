@@ -57,7 +57,7 @@ public class PacienteRepositoryImpl implements IPacienteRepository{
 	public List<PacienteSencillo> buscar(LocalDateTime fecha, String genero) {
 		// TODO Auto-generated method stub
 		
-		TypedQuery<PacienteSencillo> myQuery = this.entityManager.createQuery("SELECT NEW com.uce.edu.demo.correccion.repository.modelo.PacienteSencillo(p.cedula, p.nombre, p.fechaNacimiento) from Paciente p Where p.fechaNacimiento > :fecha and p.genero=:genero",PacienteSencillo.class);
+		TypedQuery<PacienteSencillo> myQuery = this.entityManager.createQuery("SELECT NEW com.uce.edu.demo.correccion.repository.modelo.PacienteSencillo(p.cedula, p.nombre, p.fechaNacimiento, p.genero) from Paciente p Where p.fechaNacimiento > :fecha and p.genero=:genero",PacienteSencillo.class);
 		myQuery.setParameter("fecha", fecha);
 		myQuery.setParameter("genero", genero);
 		return myQuery.getResultList();
